@@ -1,0 +1,24 @@
+<div>
+  <input type="button" name="Add" value="Add and update" (click)="addUpdateStudent()">&nbsp;
+  <input type="button" name="Add" value="Delete update" (click)="deleteAllStudents(students)"><br/><br/>
+  <label for="">Id: </label>
+  <input type="text" placeholder="Id" name="id" [(ngModel)]="student.id"><br/><br/>
+  <label for="">FirstName: </label>
+  <input type="text" placeholder="Name" name="firstName" [(ngModel)]="student.firstName"><br/><br/>
+  <label for="">LastName: </label>
+  <input type="text" placeholder="Last" name="lastName" [(ngModel)]="student.lastName"><br/><br/>
+  <label for="">Email: </label>
+  <input type="text" placeholder="email" name="email" [(ngModel)]="student.email"><br/><br/>
+  <label for="">Phone: </label>
+  <input type="text" placeholder="phone" name="phone" [(ngModel)]="student.phone"><br/><br/>
+  <input type="button" name="Add" value="Add and update" (click)="addUpdateStudent(student)">&nbsp;
+</div>
+
+<ul>
+  <li *ngFor="let a of students">
+      <label>{{ a.id}} </label> | {{ a.firstName}} | {{ a.lastName}} | {{ a.email}} | {{ a.phone}}
+    <button name="Delete" (click)="deleteStudent(a)">X</button>
+    <button name="Select" (click)="onSelect(a)">Select</button>
+  </li>
+</ul><br/>
+<button (click)="logout()">Logout</button>

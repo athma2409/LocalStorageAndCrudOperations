@@ -1,0 +1,51 @@
+
+<ion-toolbar>
+
+    <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+          <p style="text-align:center">
+            List-Customer works!
+          </p>
+        </ion-title>
+    </ion-toolbar>
+    <ion-content padding>
+
+        <!-- <ul>
+          <li *ngFor="let c of customer">
+
+            {{c.id}} ||  {{c.id}}  || {{c.email}} || {{c.phone}} || {{c.adress}}
+
+          </li>
+        </ul> -->
+
+        <!-- List of Text Items -->
+        <ion-button color="danger" (click)="deleteAllCustomers()">deleteAllCustomers</ion-button>     
+<ion-list  inset="true" lines="none" insert="true" *ngFor="let c of customer">
+        <ion-card>
+              <ion-item >      
+                    <ion-label> 
+                        <ion-icon name="contact"></ion-icon> {{c.id}} : {{c.name}} 
+                              <ion-badge color="primary" style="float:right" (click)="onSelect(c.id)" >Edit   
+                                 <ion-icon name="create"></ion-icon></ion-badge>                                  
+                      </ion-label>   
+                </ion-item>
+                
+                  <ion-item >  
+                      <ion-label>   
+                        <ion-icon name="mail"></ion-icon> {{c.email}} || 
+                        <ion-icon name="call"></ion-icon> {{c.phone}} 
+                      </ion-label>
+                  </ion-item >
+                  
+                  <ion-item >
+                      <ion-label> <ion-icon name="locate"></ion-icon> {{c.adress}}   
+                        <ion-button color="danger" (click)="deleteCustomer(c) " style="float:right">X</ion-button>
+                      </ion-label>
+                  </ion-item>
+                
+        </ion-card>
+    </ion-list>
+
+</ion-content>

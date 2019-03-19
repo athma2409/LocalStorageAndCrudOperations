@@ -1,0 +1,96 @@
+
+<div style="text-align:center;color: crimson">
+    <h1>
+      Welcome to Person component!
+    </h1>
+  </div>
+
+
+
+<div style="text-align:center">
+ 
+
+<form>
+Id : <input type="text" name="id" [(ngModel)]="person.id" placeholder="Enter Id"><br><br>
+Name : <input type="text" name="name" [(ngModel)]="person.name" placeholder="Enter Name"><br><br>
+Email : <input type="text" name="email" [(ngModel)]="person.email" placeholder="Enter Email"><br><br>
+Phone : <input type="text" name="phone" [(ngModel)]="person.phone" placeholder="Enter Phone"><br><br>
+Adress : <input type="text" name="adress" [(ngModel)]="person.adress" placeholder="Enter Adress"><br><br>
+
+  
+
+<input type="button" value="Add Person()" (click)="addPerson()"> || <input type="button" value="Delete All Persons" (click)="deleteAllPersons()"> 
+
+<br><br>
+<label style="color:red">Enter id to be delete :
+    <input type="text" name="delete"  [(ngModel)]="person.id"><input type="button" value="Delete Person" (click)="deletePersonWithId(p)"> 
+</label>
+
+
+</form>
+
+<hr>
+<!-- <ul >
+    <li *ngFor="let p of persons" >
+      {{p.id}} | {{p.name}} | {{p.phone}}| {{p.email}} | {{p.adress}} |  <button type="button" (click)="deletePerson(p)">X</button>
+  
+    </li>
+  </ul>   -->
+
+
+
+<div style="align-content: center">
+
+<table  style="border:1px solid black ; padding : 10px ; text-align: center">
+ <thead>
+   <tr>
+
+<th>ID</th>
+<th>Name</th>
+<th>Phone</th>
+<th>Email</th>
+<th>Adress</th>
+
+
+   </tr>
+ </thead>
+<tbody *ngFor="let p of persons" (click)="onSelect(p)" >
+    <tr>    
+      
+    <td> {{p.id}} </td>
+    <td> {{p.name}} </td>
+    <td> {{p.phone}} </td>
+    <td> {{p.email}} </td>
+    <td> {{p.adress}} </td>
+    <td><button type="button" (click)="deletePerson(p)" style="color:red">X</button></td>
+    <td><button type="button" (click)="selectPerson(p)" style="color:red">Select</button></td>
+    </tr>
+
+</tbody>
+</table>
+</div>
+
+
+</div>
+
+
+<!-- <div *ngIf="clickPerson">
+
+    <h2>{{selectedPerson.name }} </h2>
+    <div><span>id: </span>{{selectedPerson.id}}</div>
+    <div>
+      <label>name:
+        <input [(ngModel)]="selectedPerson.name"  placeholder="name"/> 
+      </label><br>
+      <label>phone:
+          <input [(ngModel)]="selectedPerson.phone"  placeholder="phone"/> 
+        </label><br>
+        <label>email:
+            <input [(ngModel)]="selectedPerson.email"  placeholder="phone"/> 
+          </label><br>
+          <label>adress:
+              <input [(ngModel)]="selectedPerson.adress"  placeholder="phone"/> 
+            </label>
+    </div>
+  
+  </div> -->

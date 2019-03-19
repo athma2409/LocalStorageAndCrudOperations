@@ -1,0 +1,44 @@
+
+
+<ion-toolbar>
+
+    <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+<h1>Edit Customer</h1>
+        </ion-title>
+    </ion-toolbar>
+
+<ion-content padding>
+    <br><br>
+
+    <ion-item>
+        <ion-label position="floating"></ion-label>
+        <ion-input  name="id" [(ngModel)]="customer.id"  placeholder="Enter id"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label position="floating" ></ion-label>
+          <ion-input name="name" [(ngModel)]="customer.name"  placeholder="Enter name"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating"></ion-label>
+            <ion-input  name="phno" [(ngModel)]="customer.phone"  placeholder="phno"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label position="floating"></ion-label>
+              <ion-input  name="email"  [(ngModel)]="customer.email" placeholder="email"></ion-input>
+            </ion-item>
+          <ion-item>
+              <ion-label position="floating" ></ion-label>
+              <ion-input name="adress" [(ngModel)]="customer.adress" placeholder="adress"></ion-input>
+            </ion-item>
+
+
+    
+    <!-- <input type="button" value="Add User" onclick="addCustomer(id1.value,name1.value,phno.value,email.value,adress.value)"> -->
+
+  <ion-button color="primary" (click)="updateCustomer(customer)">UpdateCustomer</ion-button> 
+
+
+  </ion-content>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Assignment</title>
+</head>
+<body>
+    <form name="myform">
+<input type="button" value="deleteLastUser" onclick="deleteLastUser()"> ||
+<input type="button" value="deleteAllUsers" onclick="deleteAllUsers()"> ||
+<input type="button" value="ShowList" onclick="showUsers()">
+<!-- <input type="button" value="ShowList" onclick="showListInBrowser()"> -->
+
+
+<br><br>
+<input type="text" name="id1" id="idInput" placeholder="id"><br><br>
+<input type="text" name="name1" placeholder="name"><br><br>
+<input type="text" name="phno" placeholder="phno"><br><br>
+<input type="text" name="email" placeholder="email"><br><br>
+<input type="text" name="adress" placeholder="adress"><br><br>
+
+<input type="button" value="Add User" onclick="addUser(id1.value,name1.value,phno.value,email.value,adress.value)">
+
+
+    </form>
+
+
+
+<hr>
+
+
+<input type="button" value="showListInBrowser" onclick="showListInBrowser()"> ||
+<input type="button" value="deleteListInBrowser" onclick="deleteListInBrowser()"> ||
+<input type="button" value="deleteAll" onclick="deleteAll()">
+
+<h1>Display Users list</h1>
+
+<p><span id='display'></span></p>
+
+<hr>
+
+
+
+      
+</body>
+</html>
+
+
+
+
+<script>
+
+ //browser   
+showListInBrowser=function(){
+    var userList=getUser();
+
+    if(userList !=null){
+        for(var i=0;i<userList.length;i++){
+            var x=("id : "+userList[i].id+" , name : "+userList[i].name +" , email : "+userList[i].email + " , phno : "+userList[i].phno + " , adress :"+userList[i].adress);
+        
+        
+        }
+    }
+    document.getElementById("display").innerHTML=x;
+
+
+
+var html = "<table border='1|1'>";
+for (var i = 0; i < userList.length; i++) {
+    html+="<tr>";
+    html+="<td>"+userList[i].id+"</td>";
+    html+="<td>"+userList[i].name+"</td>";
+    html+="<td>"+userList[i].phno+"</td>";
+    html+="<td>"+userList[i].email+"</td>";
+    html+="<td>"+userList[i].adress+"</td>";
+    html+="</tr>";
+
+}
+html+="</table>";
+document.getElementById("display").innerHTML = html;
+
+}
+
+deleteListInBrowser=function(){
+    //var data=[];
+    var userList=getUser();
+
+    userList.pop();
+    //data.push();
+    localStorage.setItem('persons',JSON.stringify(userList));
+
+    var html = "<table border='1|1'>";
+for (var i = 0; i < userList.length; i++) {
+    html+="<tr>";
+    html+="<td>"+userList[i].id+"</td>";
+    html+="<td>"+userList[i].name+"</td>";
+    html+="<td>"+userList[i].phno+"</td>";
+    html+="<td>"+userList[i].email+"</td>";
+    html+="<td>"+userList[i].adress+"</td>";
+    html+="</tr>";
+
+}
+html+="</table>";
+document.getElementById("display").innerHTML = html;
+}
+
+
+
+deleteAll=function(){
+    var userList=getUser();
+
+    for (var i = 0; i < userList.length; i++) {
+        userList.length=0;
+    }
+    var html = "<table border='1|1'>";
+for (var i = 0; i < userList.length; i++) {
+    html+="<tr>";
+    html+="<td>"+userList[i].id+"</td>";
+    html+="<td>"+userList[i].name+"</td>";
+    html+="<td>"+userList[i].phno+"</td>";
+    html+="<td>"+userList[i].email+"</td>";
+    html+="<td>"+userList[i].adress+"</td>";
+    html+="</tr>";
+
+}
+html+="</table>";
+document.getElementById("display").innerHTML = html;
+
+localStorage.clear('userList');
+
+}
+
+
+
+
+
+
+
+
+//console
+
+
+getUser=function(){
+    var userList=[];
+    if(localStorage.getItem('persons')!=null){
+userList=JSON.parse(localStorage.getItem('persons'));
+    }
+    return userList;
+}
+addUser=function(id1,name1,phno,email,adress){
+    var userList=getUser();
+    var person={};
+    person.id=id1;
+    person.name=name1;
+    person.phno=phno;
+    person.email=email;
+    person.adress=adress;
+    
+    userList.push(person);
+
+
+    localStorage.setItem('persons',JSON.stringify(userList));
+console.log("User added succesfully");
+
+//browser table
+var html = "<table border='1|1'>";
+for (var i = 0; i < userList.length; i++) {
+    html+="<tr>";
+    html+="<td>"+userList[i].id+"</td>";
+    html+="<td>"+userList[i].name+"</td>";
+    html+="<td>"+userList[i].phno+"</td>";
+    html+="<td>"+userList[i].email+"</td>";
+    html+="<td>"+userList[i].adress+"</td>";
+    html+="</tr>";
+
+}
+html+="</table>";
+document.getElementById("display").innerHTML = html;
+
+}
+deleteLastUser=function(){
+
+    var userList=getUser();
+    userList.pop();
+    localStorage.setItem('persons',JSON.stringify(userList));
+}
+deleteAllUsers=function(){
+    var userList=getUser();
+
+    localStorage.clear('userList');
+}
+
+showUsers=function(){
+    var userList=getUser();
+
+    console.log("Total : " + userList.length);
+        console.log("id || name || phno || email || adress ");
+
+
+    for(var i=0;i<userList.length;i++){
+        var p=userList[i];
+
+        console.log(p.id + "||" + p.name + "||"+ p.phno + "||"+ p.email + "||"+ p.adress);
+    }
+}
+
+
+</script>
